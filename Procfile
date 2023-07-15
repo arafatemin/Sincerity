@@ -1,0 +1,1 @@
+web: gunicorn Sincerity.wsgi --log-file -

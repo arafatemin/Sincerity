@@ -1,0 +1,182 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{#    <div class="wrapper">#}
+{##}
+{##}
+{#        <div class="page-wrapper">#}
+{#            <div class="page-content">#}
+{##}
+{#                <div class="row">#}
+{#                    <div class="col-12 col-lg-3">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body">#}
+{##}
+{##}
+{#                                <h4 class="my-3">The {{ category.title }} Information</h4>#}
+{##}
+{##}
+{#                                <div class="fm-menu">#}
+{#                                    <div class="list-group list-group-flush">#}
+{#                                        <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"#}
+{#                                           href="{% url 'articles' %}" class="list-group-item py-1"><i#}
+{#                                                class='bx bxs-book-bookmark'></i><span#}
+{#                                                style="margin-left: 1rem">All</span></a>#}
+{#                                        <br>#}
+{#                                        <hr>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                                {% if groups %}#}
+{#                                    {% for group in groups %}#}
+{#                                        <div class="card">#}
+{#                                            <div class="card-body">#}
+{#                                                <a href="{% url 'Article_Detail' group.id %}?category={{ group.name }}">#}
+{#                                                    <h5 class="card-title">#}
+{#                                                        <span style="text-align: center; color: #0a58ca">{{ group.name }} Types</span>#}
+{#                                                    </h5></a>#}
+{##}
+{#                                                <div class="fm-menu">#}
+{#                                                    <div class="list-group list-group-flush">#}
+{#                                                        {% for article in article_names %}#}
+{#                                                            {% if article.group_name.name == group.name %}#}
+{#                                                                <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"#}
+{#                                                                   href="{% url 'getarticles' article.id %}?category={{ article.name }}"#}
+{#                                                                   class="list-group-item py-1"><i#}
+{#                                                                        class='bx bxs-book-heart'></i>#}
+{#                                                                    <span style="margin-left: 1rem">{{ article.name }}</span>#}
+{#                                                                </a>#}
+{#                                                                <br>#}
+{#                                                            {% endif %}#}
+{#                                                        {% endfor %}#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <hr>#}
+{##}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    {% endfor %}#}
+{##}
+{#                                {% endif %}#}
+{##}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                    {% if articles %}#}
+{#                        <div class="col-12 col-lg-9">#}
+{#                            <div class="card">#}
+{#                                <div class="card-body">#}
+{##}
+{##}
+{#                                    <div class="row mt-3">#}
+{#                                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">#}
+{##}
+{#                                            {% for article in articles %}#}
+{#                                                <div class="col">#}
+{#                                                    <div class="card radius-15">#}
+{#                                                        <div class="card-body text-center">#}
+{#                                                            <div class="p-4 border radius-15">#}
+{#                                                                <a href="{% url 'getarticles' article.id %}?category={{ article.name }}"><img#}
+{#                                                                        src="{{ article.image.url }}"#}
+{#                                                                        style="height: 280px; width: 100%;"></a>#}
+{#                                                                <h5 class="mb-0 mt-5">{{ article.category.title }}</h5>#}
+{#                                                                <a href="{% url 'getarticles' article.id %}?category={{ article.name }}"#}
+{#                                                                   class="mb-3">#}
+{#                                                                    {{ article.name }}</a>#}
+{#                                                                <p class="mb-3">{{ article.date|date:'Y-m-d' }}</p>#}
+{##}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            {% endfor %}#}
+{##}
+{##}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    {% endif %}#}
+{##}
+{##}
+{##}
+{##}
+{#                    {% if article_names %}#}
+{#                        <div class="col-12 col-lg-9">#}
+{#                            <div class="card">#}
+{#                                <div class="card-body">#}
+{##}
+{##}
+{#                                    <div class="row mt-3">#}
+{#                                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">#}
+{##}
+{#                                            {% for article_name in article_names %}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                                                <div class="col">#}
+{#                                                    <div class="card radius-15">#}
+{#                                                        <div class="card-body text-center">#}
+{#                                                            <div class="p-4 border radius-15">#}
+{#                                                                <a href="{% url 'getarticles' article_name.id %}?category={{ article_name.name }}"><img#}
+{#                                                                        src="{{ article_name.image.url }}"#}
+{#                                                                        style="height: 280px; width: 100%;"></a>#}
+{#                                                                <h5 class="mb-0 mt-5">{{ article_name.category.title }}</h5>#}
+{#                                                                <a href="{% url 'getarticles' article_name.id %}?category={{ article_name.name }}"#}
+{#                                                                   class="mb-3">#}
+{#                                                                    {{ article_name.name }}</a>#}
+{#                                                                <p class="mb-3">{{ article_name.date|date:'Y-m-d' }}</p>#}
+{##}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                                            {% endfor %}#}
+{##}
+{##}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    {% endif %}#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{##}
+{#{% endblock %}#}

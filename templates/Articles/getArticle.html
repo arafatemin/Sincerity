@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+
+
+        <div class="page-wrapper">
+            <div class="page-content">
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Article</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                        class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Article</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-body" style="height: 53vh">
+
+
+                                <h5 class="my-3">The {{ article_name }} Information</h5>
+
+
+                                <div class="fm-menu">
+                                    <div class="list-group list-group-flush">
+
+
+                                        <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"
+                                           href="{% url 'articles' %}"
+                                           class="list-group-item py-1"><i
+                                                class='bx bxs-book-bookmark'></i><span
+                                                style="margin-left: 1rem">All</span></a>
+                                        <hr>
+                                        <br>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="fm-menu">
+                                    <div class="list-group list-group-flush">
+                                        <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"
+                                           href="{% url 'getarticles' article.id %}"
+                                           class="list-group-item py-1"><i
+                                                class='bx bxs-book-open'></i><span
+                                                style="margin-left: 1rem">{{ article.name }}</span></a> <br>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-grid" style="padding-top: 17vh;"><a
+                                        href="{% url 'Article_Detail' article.id %}?category={{ article.category.title }}"
+                                        class="btn btn-outline-primary radius-15">Go Back</a>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-lg-9">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <div class="row mt-9">
+                                    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-1">
+
+                                        {#                                        {% for article in articles %}#}
+                                        <div class="card">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 border-end">
+                                                    <img src="{{ article.image.url }}"
+                                                         style="width: 100%; height: 46vh" class="img-fluid"
+                                                         alt="...">
+
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">{{ article.category.title }}
+                                                            / {{ article.name }}</h4>
+                                                        <hr>
+
+
+                                                        <dl class="row">
+
+
+                                                            <dt class="col-sm-3">Writer</dt>
+                                                            <dd class="col-sm-9">{{ article.author }}</dd>
+                                                            <hr>
+
+
+                                                            <dt class="col-sm-3">Date</dt>
+                                                            <dd class="col-sm-9">{{ article.date|date:'Y-m-d' }}</dd>
+
+                                                            <div class="card-body">
+                                                                <ul class="nav nav-tabs nav-primary mb-0"
+                                                                    role="tablist">
+                                                                    <li class="nav-item" role="presentation">
+                                                                        <a class="nav-link active"
+                                                                           data-bs-toggle="tab"
+                                                                           href="#primaryhome" role="tab"
+                                                                           aria-selected="true">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="tab-icon"><i
+                                                                                        class='bx bx-comment-detail font-18 me-1'></i>
+                                                                                </div>
+                                                                                <div class="tab-title"> {{ article.name }}
+                                                                                    Description
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content pt-3">
+                                                                    <div class="tab-pane fade show active"
+                                                                         id="primaryhome"
+                                                                         role="tabpanel">
+                                                                        <p>{{ article.content|truncatewords:68 }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </dl>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        {#                                        {% endfor %}#}
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="font-weight-light text-center text-muted py-3">More Details</h2>
+
+
+                            <div class="row mt-3">
+                                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-1">
+
+                                    {% for all_article in all_articles %}
+                                        <div class="row">
+                                            <div class="col-auto text-center flex-column d-none d-sm-flex">
+                                                <div class="row h-50">
+                                                    <div class="col border-end">&nbsp;</div>
+                                                    <div class="col">&nbsp;</div>
+                                                </div>
+                                                <h5 class="m-2">
+                                                    <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                                                </h5>
+                                                <div class="row h-50">
+                                                    <div class="col border-end">&nbsp;</div>
+                                                    <div class="col">&nbsp;</div>
+                                                </div>
+                                            </div>
+                                            <div class="col py-2">
+                                                <div class="card border-primary shadow radius-15"
+                                                     style="border-radius: 25px">
+                                                    <div class="card-body">
+                                                        <div class="float-end text-primary">
+                                                            {{ all_article.article.date|date:'c' }}
+                                                        </div>
+                                                        <h4 class="card-title text-primary">{{ all_article.article.category.title }}
+                                                            / {{ all_article.article.name }}
+                                                            / {{ all_article.title }}</h4>
+                                                        <hr>
+                                                        <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
+                                                            <div class="col">
+                                                                <div class="card">
+                                                                    <div class="row g-0">
+                                                                        <div class="col-md-4">
+                                                                            <img style="width: 100%; height: 50%"
+                                                                                 src="{{ all_article.image.url }}"
+                                                                                 alt="..."
+                                                                                 class="card-img">
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="card-body">
+                                                                                <h5 class="card-title">{{ all_article.title }}</h5>
+                                                                                <hr>
+                                                                                <p class="card-text">{{ all_article.content }}</p>
+                                                                                <br>
+                                                                                <b class="card-title">The important
+                                                                                    part</b>
+                                                                                <hr>
+                                                                                <p class="card-text">{{ all_article.sub_title }}</p>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <div class="card">
+                                                                    <div class="row g-0">
+                                                                        <div class="col-md-12">
+                                                                            <img style="width: 100%; height: 500px;"
+                                                                                 src="{{ all_article.code_image.url }}"
+                                                                                 alt="..."
+                                                                                 class="card-img">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="float-end text-primary">
+                                                            Writer: {{ all_article.article.author }}</div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br><br>
+
+
+
+
+
+
+                                    {% endfor %}
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

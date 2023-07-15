@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from codervent.com/rocker/demo/horizontal/errors-500-error.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 May 2023 05:15:51 GMT -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="{% static 'assets/images/sLogo.jpeg' %}" type="image/png"/>
+    <!-- loader-->
+    <link href="{% static 'assets/css/pace.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/bootstrap-extended.css' %}" rel="stylesheet">
+    <link href="../../../../fonts.googleapis.com/css276c7.css?family=Roboto:wght@400;500&amp;display=swap"
+          rel="stylesheet">
+    <link href="{% static 'assets/css/app.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet">
+    <title>Sincerity Academy</title>
+</head>
+
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white rounded fixed-top rounded-0 shadow-sm">
+        <div class="container-fluid">
+
+
+            <div class="topbar-logo-header d-none d-lg-flex">
+                <div class="">
+                    <a href="{% url 'index' %}"><img src="{% static 'assets/images/sLogo.jpeg' %}" height="30px"
+                                                     width="50px" class="logo-icon" alt="logo icon"></a>
+                </div>
+                <div class="">
+                    <a href="{% url 'index' %}"><h4 class="logo-text">Sincerity</h4></a>
+                </div>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}"><i
+                            class='bx bx-home-alt me-1'></i>Home</a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i
+                            class='bx bx-log-in-circle me-1'></i>Login</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="error-404 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-xl-5">
+                        <div class="card-body p-4">
+                            <h1 class="display-1"></h1>
+                            <h2 class="font-weight-bold display-4">Sorry you are not registered</h2>
+                            <p>Looks like you are lost!
+                                <br>If you want, we can direct you to the registration page or home page!</p>
+                            <div class="mt-5"><a href="{% url 'index' %}"
+                                                 class="btn btn-lg btn-primary px-md-5 radius-30">Go Home</a>
+                                <a href="{% url 'login' %}"
+                                   class="btn btn-lg btn-outline-dark ms-3 px-md-5 radius-30">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7">
+                        <img src="{% static 'assets/images/errors-images/account.jpeg' %}" style="margin: 0.1rem; border-radius: 15px" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+    </div>
+    <div class="bg-white p-3 fixed-bottom border-top shadow">
+        <div class="d-flex align-items-center justify-content-between flex-wrap">
+            <ul class="list-inline mb-0">
+					<li class="list-inline-item">Follow Me :</li>
+					<li class="list-inline-item"><a href="https://github.com/arafatemin"><i class='bx bxl-github me-1'></i>Github</a>
+					</li>
+					<li class="list-inline-item"><a href="https://www.linkedin.com/in/arafatemin/"><i class='bx bxl-linkedin me-1'></i>Linkedin</a>
+					</li>
+
+				</ul>
+				<p class="mb-0">Designed By Sincerity Academy IN SoftWare © 2023.</p>
+        </div>
+    </div>
+</div>
+<!-- end wrapper -->
+<!-- Bootstrap JS -->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

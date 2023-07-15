@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">Projects</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                    class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                        </ol>
+                    </nav>
+                </div>
+                <a href="{% url 'index' %}" class="btn btn-inverse-primary "
+                   style="position: absolute; right: 0; margin-right: 2rem"> < Go Back</a>
+
+            </div>
+            <hr>
+
+
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3">
+
+
+                {% for project in page_obj %}
+                    <div class="col">
+                        <div class="card">
+                            <img style="height: 30vh; width: 100%;margin-bottom: 5px" src="{{ project.image.url }}"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.name }}</h5>
+                                <p class="card-text">{{ project.description }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+
+                                <li class="list-group-item"><a href="#" class="card-link">{{ project.link_project }}
+                                </a></li>
+
+                                <li class="list-group-item">Started: {{ project.start_date|date:'c' }}</li>
+                                <li class="list-group-item">Ended: {{ project.end_date|date:'c' }}</li>
+                            </ul>
+
+                            <div class="card-body"><a class="card-link">Designed By {{ project.manager }}</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+
+
+            <div class="card-body mb-5">
+                <nav aria-label="Page navigation ">
+                    <ul class="pagination pagination-lg round-pagination float-end">
+                        {% if page_obj.has_previous %}
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=1">First Page</a>
+                            </li>
+                            <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+                        {% endif %}
+                        <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }}
+                            of {{ page_obj.paginator.num_pages }}</a>
+                        </li>
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link"
+                                                     href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="?page={{ page_obj.paginator.num_pages }}">Last Page</a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            </div>
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

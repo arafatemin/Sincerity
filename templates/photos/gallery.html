@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+
+
+        <div class="page-wrapper">
+            <div class="page-content">
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Countries</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                        class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <a href="{% url 'index' %}" class="btn btn-inverse-primary "
+                       style="position: absolute; right: 0; margin-right: 2rem"> < Go Back</a>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+
+
+
+
+
+                                <h5 class="my-3">Countries I have visited</h5>
+                                <div class="fm-menu">
+                                    <div class="list-group list-group-flush">
+
+                                        <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"
+                                           href="{% url 'gallery' %}" class="list-group-item py-1"><i
+                                                class='bx bxs-city'></i><span style="margin-left: 1rem">All</span></a>
+                                        <br>
+
+                                    </div>
+                                </div>
+
+                                <div class="fm-menu">
+                                    <div class="list-group list-group-flush">
+                                        {% for category in categories %}
+                                            <a style="border-radius: 25px; border-style: solid; border-color: #999ea2"
+                                               href="{% url 'gallery' %}?category={{ category.name }}"
+                                               class="list-group-item py-1"><i
+                                                    class='bx bxs-city'></i><span
+                                                    style="margin-left: 1rem">{{ category.name }}</span></a><br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <br><br>
+
+
+                                {% if request.user.is_superuser %}
+                                    <div class="d-grid"><a href="{% url 'add' %}"
+                                                           class="btn btn-outline-primary radius-15">Add Country Or
+                                        Pictures</a>
+                                    </div>
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-12 col-lg-9">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <div class="row mt-3">
+                                    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+
+                                        {% for photo in page_obj %}
+                                            <div class="col">
+                                                <div class="card radius-15">
+                                                    <div class="card-body text-center">
+                                                        <div class="p-4 border radius-15">
+                                                            <img src="{{ photo.image.url }}"
+                                                                 style="height: 280px; width: 100%;">
+                                                            <h5 class="mb-0 mt-5">{{ photo.category.name }}</h5>
+                                                            <p class="mb-3">{{ photo.date|date:'Y-m-d' }}</p>
+                                                            <div class="d-grid"><a href="{% url 'contact' %}"
+                                                                                   class="btn btn-outline-primary radius-15">Contact
+                                                                Me</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                <div class="card-body mb-5">
+                    <nav aria-label="Page navigation ">
+                        <ul class="pagination pagination-lg round-pagination float-end">
+                            {% if page_obj.has_previous %}
+                                </li>
+                                <li class="page-item"><a class="page-link" href="?page=1">First Page</a>
+                                </li>
+                                <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+                            {% endif %}
+                            <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }}
+                                of {{ page_obj.paginator.num_pages }}</a>
+                            </li>
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                </li>
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ page_obj.paginator.num_pages }}">Last Page</a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+

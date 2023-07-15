@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!doctype html>
+    <html lang="en">
+
+
+    <body>
+    <!--wrapper-->
+    <div class="wrapper">
+
+        <div class="page-wrapper">
+            <div class="page-content">
+
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Books</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                        class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <a href="{% url 'index' %}" class="btn btn-inverse-primary "
+                       style="position: absolute; right: 0; margin-right: 2rem"> < Go Back</a>
+                </div>
+                <hr>
+
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-xl-3">
+                    {% for book in page_obj %}
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <a href="{% url 'bookDetail' book.id %}"><img
+                                                        style="height: 70vh; width: 100%;margin-bottom: 5px"
+                                                        src="{{ book.image.url }}" class="d-block w-100" alt="..."></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <a href="{% url 'bookDetail' book.id %}"
+                                                   class="btn btn-outline-primary d-lg-block">
+                                                    Detail View
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+
+                </div>
+                <!--end row-->
+
+                <div class="card-body mb-5">
+                    <nav aria-label="Page navigation ">
+                        <ul class="pagination pagination-lg round-pagination float-end">
+                            {% if page_obj.has_previous %}
+                                </li>
+                                <li class="page-item"><a class="page-link" href="?page=1">First Page</a>
+                                </li>
+                                <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+                            {% endif %}
+                            <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }}
+                                of {{ page_obj.paginator.num_pages }}</a>
+                            </li>
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                </li>
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ page_obj.paginator.num_pages }}">Last Page</a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    </body>
+
+
+    <!-- Mirrored from codervent.com/rocker/demo/horizontal/component-carousels.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 May 2023 05:18:49 GMT -->
+    </html>
+
+{% endblock %}

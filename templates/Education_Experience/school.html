@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <body>
+    <div class="wrapper">
+
+        <!--start page wrapper -->
+        <div class="page-wrapper">
+            <div class="page-content">
+
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Schools</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                        class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">School</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <a href="{% url 'index' %}" class="btn btn-inverse-primary "
+                       style="position: absolute; right: 0; margin-right: 2rem"> < Go Back</a>
+                </div>
+                {% for school in schools %}
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-4 border-end">
+                                <img src="{{ school.file.url }}" style="width: 100%; height: 70vh" class="img-fluid"
+                                     alt="...">
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="color: #0a58ca">{{ school.name }}</h4> <br> <br>
+                                    <br>
+
+                                    <dl class="row">
+                                        <dt class="col-sm-3 price h4">Type</dt>
+                                        <dd class="col-sm-9">{{ school.categoryEducation.category }}</dd>
+                                        <hr>
+
+
+                                        <dt class="col-sm-3">Language</dt>
+                                        <dd class="col-sm-9">{{ school.language }}</dd>
+                                        <hr>
+
+
+                                        <dt class="col-sm-3">Country</dt>
+                                        <dd class="col-sm-9">{{ school.country }}</dd>
+                                        <hr>
+
+
+                                        <dt class="col-sm-3">Start Date</dt>
+                                        <dd class="col-sm-9">{{ school.start_date|date:'Y-m-d H:i' }}</dd>
+                                        <hr>
+
+
+                                        <dt class="col-sm-3">End Date</dt>
+                                        <dd class="col-sm-9">{{ school.end_date|date:'Y-m-d H:i' }}</dd>
+                                        <hr>
+
+
+                                        <div class="card-body">
+                                            <ul class="nav nav-tabs nav-primary mb-0" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link active" data-bs-toggle="tab" href="#primaryhome"
+                                                       role="tab"
+                                                       aria-selected="true">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="tab-icon"><i
+                                                                    class='bx bx-comment-detail font-18 me-1'></i>
+                                                            </div>
+                                                            <div class="tab-title"> school Description</div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content pt-3">
+                                                <div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
+                                                    <p>{{ school.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <dd class="col-sm-12"><a href="{{ school.file.url }}"
+                                                                 class="btn btn-outline-primary d-lg-block">Download</a>
+                                        </dd>
+
+                                    </dl>
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+
+
+{% endblock %}

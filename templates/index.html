@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+    <div class="page-wrapper">
+
+
+        <div class="page-content">
+
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-4 border-info">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Schools & Courses</p>
+                                    <h4 class="my-1 text-info">{{ educations.count }}</h4>
+                                    <p class="mb-0 font-13">I have Studied</p>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i
+                                        class='bx bxs-city'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-4 border-danger">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Books</p>
+                                    <h4 class="my-1 text-danger">{{ books.count }}</h4>
+                                    <p class="mb-0 font-13">I have read</p>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i
+                                        class='bx bxs-note'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-4 border-success">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Lessons </p>
+                                    <h4 class="my-1 text-success">{{ articles.count }}</h4>
+                                    <p class="mb-0 font-13">I have learned</p>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
+                                    <i class='bx bxs-book'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-4 border-warning">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Projects</p>
+                                    <h4 class="my-1 text-success">{{ projects.count }}</h4>
+                                    <p class="mb-0 font-13">I have made</p>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
+                                    <i class='bx bxs-book'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row mt-0">
+
+                                <div class="row row-cols-12  row-cols-lg-2 row-cols-xl-3">
+
+
+                                    {% for category in categories %}
+                                        <div class="col">
+                                            <div class="card radius-15">
+                                                <div class="card-body text-center">
+                                                    <div class="p-4 border radius-15">
+                                                        <img src="{{ category.image.url }}"
+                                                             style="height: 280px; width: 100%;">
+                                                        <h5 class="mb-2 mt-5"
+                                                            style="padding-top: 40px">{{ category.title }}</h5><br>
+                                                        {% if user.is_authenticated %}
+                                                            <div class="d-grid"><a
+                                                                    href="{% url 'Article_Detail' category.id %}?category={{ category.title }}"
+                                                                    class="btn btn-outline-primary radius-15">Detail
+                                                                View</a>
+                                                            </div>
+
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-content pt-3">
+                <div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-8" >
+                            <div class="card" >
+                                <div class="card-body p-4">
+                                    <form method="POST" class="row g-3 needs-validation" novalidate >
+                                        {% csrf_token %}
+                                        <div class="col-md-12">
+                                            <label for="bsValidation1" class="form-label">Name</label>
+                                            <input type="text" name="name" class="form-control"
+                                                   id="bsValidation1"
+                                                   placeholder="Name" required>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="bsValidation4" class="form-label">Surname</label>
+                                            <input type="text" name="surname" class="form-control"
+                                                   id="bsValidation4"
+                                                   placeholder="Surname" required>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <label for="bsValidation4" class="form-label">Email</label>
+                                            <input type="email" name="email" class="form-control"
+                                                   id="bsValidation4"
+                                                   placeholder="Email" required>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <label for="bsValidation4" class="form-label">Content</label>
+                                            <textarea type="text" name="content" class="form-control"
+                                                      id="bsValidation4"
+                                                      placeholder="Content" required></textarea>
+                                        </div>
+
+
+                                        <div class="col-md-12 " style="padding-top: 100px">
+                                            <input type="submit" style="width: 100%"
+                                                   class="btn btn-outline-primary d-lg-block"
+                                                   value="Send">
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-4">
+                                        <div class="card radius-15">
+                                            <div class="card-body text-center">
+                                                <div class="p-1 border radius-15 p-lg-5">
+                                                    <div class="clock" style="margin-left: 0.5rem">
+                                                        <div class="numbers">
+                                                            <span style="--i:0;"><b>12</b></span>
+                                                            <span style="--i:1;"><b>1</b></span>
+                                                            <span style="--i:2;"><b>2</b></span>
+                                                            <span style="--i:3;"><b>3</b></span>
+                                                            <span style="--i:4;"><b>4</b></span>
+                                                            <span style="--i:5;"><b>5</b></span>
+                                                            <span style="--i:6;"><b>6</b></span>
+                                                            <span style="--i:7;"><b>7</b></span>
+                                                            <span style="--i:8;"><b>8</b></span>
+                                                            <span style="--i:9;"><b>9</b></span>
+                                                            <span style="--i:10;"><b>10</b></span>
+                                                            <span style="--i:11;"><b>11</b></span>
+
+                                                            <div class="circle" id="hr"><i></i></div>
+                                                            <div class="circle" id="mn"><i></i></div>
+                                                            <div class="circle" id="sc"><i></i></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {% if user.is_authenticated %}
+                                                        {% for manager in managers %}
+                                                            <h5 class="mb-0 mt-3">{{ manager.name|title }} {{ manager.lastname|title }}</h5>
+                                                            <h6 class="mb-3">{{ manager.department }}</h6>
+                                                            <div class="d-grid"><a
+                                                                    href="{% url 'aboutMe' %}"
+                                                                    class="btn btn-outline-primary radius-15">About
+                                                                Me</a>
+                                                            </div>
+                                                        {% endfor %}
+                                                    {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

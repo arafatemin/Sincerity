@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+    <body>
+    <!--wrapper-->
+    <div class="wrapper">
+
+        <!--start page wrapper -->
+        <div class="page-wrapper">
+            <div class="page-content">
+
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Rooms</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i
+                                        class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Room</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+
+                </div>
+                <!--end breadcrumb-->
+
+                <div class="card">
+
+
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-primary mb-0" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#primaryhome" role="tab"
+                                   aria-selected="true">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon"><i class='bx bx-comment-detail font-18 me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Please enter your info</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3">
+                            <div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-xl-9 mx-auto">
+                                        <div class="card">
+
+                                            <div class="card-body p-4">
+                                                <form method="POST" class="row g-3 needs-validation" novalidate>
+                                                    {% csrf_token %}
+                                                    <div class="col-md-12">
+                                                        <label for="bsValidation1" class="form-label">Name</label>
+                                                        <input type="text" name="name" class="form-control"
+                                                               id="bsValidation1"
+                                                               placeholder="Name" required>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="bsValidation4" class="form-label">Surname</label>
+                                                        <input type="text" name="surname" class="form-control"
+                                                               id="bsValidation4"
+                                                               placeholder="Surname" required>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <label for="bsValidation4" class="form-label">Email</label>
+                                                        <input type="email" name="email" class="form-control"
+                                                               id="bsValidation4"
+                                                               placeholder="Email" required>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <label for="bsValidation4" class="form-label">Content</label>
+                                                        <textarea type="text" name="content" class="form-control"
+                                                                  id="bsValidation4"
+                                                                  placeholder="Content" required></textarea>
+                                                    </div>
+
+
+                                                    <div class="col-md-12 ">
+                                                        <input type="submit" style="width: 100%" class="btn btn-outline-primary d-lg-block"
+                                                               value="Send">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+
+
+{% endblock %}
