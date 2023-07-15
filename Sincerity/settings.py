@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'Photos',
     'Projects',
     'user',
-    'ckeditor',
-
 ]
 
 MIDDLEWARE = [

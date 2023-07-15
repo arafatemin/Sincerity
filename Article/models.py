@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import *
-from ckeditor.fields import RichTextField
 
 
 
@@ -13,8 +12,8 @@ class SubCategory(models.Model):
     title                   = models.CharField(max_length=128, blank=True, null=True)
     image                   = models.ImageField(blank=True, null=True)
     code_image              = models.ImageField(blank=True, null=True)
-    sub_title               = RichTextField(blank=True, null=True)
-    content                 = RichTextField(blank=True, null=True)
+    sub_title               = models.TextField(blank=True, null=True)
+    content                 = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.title}'
