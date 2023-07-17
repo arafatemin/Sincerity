@@ -9,6 +9,5 @@ urlpatterns = [
     path('aboutme', AboutMe.as_view(), name='aboutMe'),
     path('contact', contact, name='contact'),
     path('not_account', not_account, name='not_account'),
-    # path('error_404', error_404, name='error_404'),
 ]
 
