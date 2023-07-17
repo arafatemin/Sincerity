@@ -58,7 +58,7 @@ def experience(request):
     return render(request, 'Education_Experience/experience.html', context)
 
 
-@method_decorator(login_required, name="dispatch")
+# @method_decorator(login_required, name="dispatch")
 class AboutMe(ListView):
     model = Manager
     context_object_name = 'managers'

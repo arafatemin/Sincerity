@@ -27,7 +27,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-@login_required(login_url="not_account")
+# @login_required(login_url="not_account")
 def articles(request):
     paginator = Paginator(Category.objects.all(), 8)
     page_number = request.GET.get('page')
@@ -39,7 +39,7 @@ def articles(request):
     return render(request, 'Articles/articles.html', context)
 
 
-@login_required(login_url="not_account")
+# @login_required(login_url="not_account")
 def article_detail(request, id):
     category = request.GET.get("category")
     if category == None:
