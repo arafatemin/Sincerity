@@ -182,7 +182,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
 
                             {% if user.is_authenticated %}
-                                <li><a class="dropdown-item d-flex align-items-center" href="#"><i
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'aboutMe' %}"><i
                                         class="bx bx-user fs-5"></i><span>Profile</span></a>
                                 </li>
                                 <li><a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}"><i
