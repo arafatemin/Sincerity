@@ -22,7 +22,7 @@ def handler404(request, exception):
 
 
 
-@login_required(login_url="not_account")
+# @login_required(login_url="not_account")
 def project(request):
     paginator = Paginator(Project.objects.all(), 3)
     page_number = request.GET.get('page')

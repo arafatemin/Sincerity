@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-%lf_8s0sndx9doj=!b$p7z*8x3@w&@ldw=5xa8fy9)x16!9cn2
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://sincerityachademy.up.railway.app/']
+
 
 # Application definition
 
@@ -70,7 +72,6 @@ TEMPLATES = [
         },
     },
 ]
-CSRF_TRUSTED_ORIGINS = ['https://sincerityachademy.up.railway.app/']
 
 WSGI_APPLICATION = 'Sincerity.wsgi.application'
 
