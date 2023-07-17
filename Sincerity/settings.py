@@ -70,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+CSRF_TRUSTED_ORIGINS = ['https://sincerityachademy.up.railway.app/']
 
 WSGI_APPLICATION = 'Sincerity.wsgi.application'
 
