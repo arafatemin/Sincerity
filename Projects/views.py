@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-
+from django.views.decorators.csrf import csrf_exempt
 from .forms import ContactForm
 from .models import Project, Education, Experience
 from django.views.generic import ListView
@@ -64,7 +64,7 @@ class AboutMe(ListView):
     context_object_name = 'managers'
     template_name = 'Education_Experience/about_Me.html'
 
-
+@csrf_exempt
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
